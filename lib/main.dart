@@ -26,7 +26,8 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyFirstWidget1(),
+      //MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -112,6 +113,41 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class MyFirstWidget extends StatelessWidget {
+  int countOfBuild = 0;
+  
+  @override
+  Widget build(BuildContext context) {
+    countOfBuild ++;
+    print('Count of build: $countOfBuild');
+    return Container(
+      child: Center(
+        child: Text('Hello!'),
+      ),
+    );
+  }
+}
+
+class MyFirstWidget1 extends StatefulWidget {
+  @override
+  _MyFirstWidget1State createState() => _MyFirstWidget1State();
+}
+
+class _MyFirstWidget1State extends State<MyFirstWidget1> {
+  int countOfBuild = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    countOfBuild ++;
+    print('Count of build: $countOfBuild');
+    return Container(
+      child: Center(
+        child: Text('Hello!'),
+      ),
     );
   }
 }
