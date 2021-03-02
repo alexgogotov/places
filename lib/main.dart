@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(App());
 }
 
 class MyApp extends StatelessWidget {
@@ -26,8 +26,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyFirstWidget1(),
-      //MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -148,6 +147,21 @@ class _MyFirstWidget1State extends State<MyFirstWidget1> {
       child: Center(
         child: Text('Hello!'),
       ),
+    );
+  }
+
+  testMethod(){
+    return context.runtimeType;
+  }
+}
+
+class App extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'App',
+      home: MyFirstWidget1(),
     );
   }
 }
