@@ -119,10 +119,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class MyFirstWidget extends StatelessWidget {
   int countOfBuild = 0;
-  
+
   @override
   Widget build(BuildContext context) {
-    countOfBuild ++;
+    countOfBuild++;
     print('Count of build: $countOfBuild');
     return Container(
       child: Center(
@@ -142,7 +142,7 @@ class _MyFirstWidget1State extends State<MyFirstWidget1> {
 
   @override
   Widget build(BuildContext context) {
-    countOfBuild ++;
+    countOfBuild++;
     print('Count of build: $countOfBuild');
     return Container(
       child: Center(
@@ -151,7 +151,7 @@ class _MyFirstWidget1State extends State<MyFirstWidget1> {
     );
   }
 
-  testMethod(){
+  testMethod() {
     return context.runtimeType;
   }
 }
