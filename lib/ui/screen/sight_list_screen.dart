@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:places/ui/screen/sight_card.dart';
+import 'package:places/mocks.dart';
+import 'package:places/ui/res/text_styles.dart';
 
 class SightListScreen extends StatefulWidget {
   @override
@@ -10,41 +13,28 @@ class _SightListScreenState extends State<SightListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          /*title: Text(
-            'Список\nинтересных мест',
-            maxLines: 2,
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: 32,
-                fontFamily: "Roboto",
-                fontWeight: FontWeight.bold),
-          ),
-          toolbarHeight: 140,
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          elevation: 0),*/
-          title: RichText(
-            text: TextSpan(
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 32,
-                  fontFamily: "Roboto",
-                  fontWeight: FontWeight.bold),
-              children: [
-                TextSpan(children: [
-                  TextSpan(text: 'С', style: TextStyle(color: Colors.green)),
-                  TextSpan(text: 'писок')
-                ]),
-                TextSpan(children: [
-                  TextSpan(text: '\nи', style: TextStyle(color: Colors.yellow)),
-                  TextSpan(text: 'нтересных мест')
-                ])
-              ],
+          title: Container(
+            width: double.infinity,
+            height: 72,
+            margin: EdgeInsets.only(top: 14),
+            child: Text(
+              'Список\nинтересных мест',
+              maxLines: 2,
+              style: largeTitle,
             ),
-            maxLines: 2,
           ),
-          toolbarHeight: 140,
+          toolbarHeight: 119,
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          elevation: 0),
+          elevation: 0,
+          titleSpacing: 16),
+
+      body: SingleChildScrollView(
+        child: Column(children: [
+          SightCard(mocks[0]),
+          SightCard(mocks[1]),
+          SightCard(mocks[2])
+        ],),
+      )
     );
   }
 }
