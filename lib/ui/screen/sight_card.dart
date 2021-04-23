@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
-import 'package:places/res/text_styles.dart';
+import 'package:places/res/text_styles1.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;
