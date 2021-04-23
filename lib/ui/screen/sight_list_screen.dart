@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places/ui/screen/sight_card.dart';
 import 'package:places/mocks.dart';
+import 'package:places/ui/res/text_styles.dart';
 
 class SightListScreen extends StatefulWidget {
   @override
@@ -19,11 +20,7 @@ class _SightListScreenState extends State<SightListScreen> {
             child: Text(
               'Список\nинтересных мест',
               maxLines: 2,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 32,
-                  fontFamily: "Roboto",
-                  fontWeight: FontWeight.bold),
+              style: largeTitle,
             ),
           ),
           toolbarHeight: 119,

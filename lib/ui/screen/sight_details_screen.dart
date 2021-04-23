@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/ui/res/text_styles.dart';
 
 class SightDetailsScreen extends StatefulWidget {
   @override
@@ -29,19 +30,15 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                   Container(
                     padding: EdgeInsets.only(left: 16, top: 15),
                     alignment: Alignment.topLeft,
-                    child: Text('Пряности и радости',
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold)),
+                    child: Text('Пряности и радости', style: title),
                   ),
                   Container(
                     padding: EdgeInsets.only(left: 16),
                     child: Row(
                       children: [
-                        Text('ресторан',
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold)),
+                        Text('ресторан', style: smallBold),
                         Padding(padding: EdgeInsets.only(left: 10)),
-                        Text('закрыто до 08:00', style: TextStyle(fontSize: 14))
+                        Text('закрыто до 08:00', style: smallBlueGrey)
                       ],
                     ),
                   ),
@@ -49,7 +46,7 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                     padding: EdgeInsets.only(left: 16, top: 15),
                     child: Text(
                         'Пряный вкус радостной жизни вместе с шеф-поваром Изо Дзандзава, благодаря которой у гостей ресторана есть возможность выбирать из двух направлений: европейского и восточного.',
-                        style: TextStyle(fontSize: 14)),
+                        style: small),
                   ),
                   Container(
                     margin: EdgeInsets.only(
@@ -68,10 +65,7 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                         Padding(padding: EdgeInsets.only(left: 10)),
                         Text(
                           'ПОСТРОИТЬ МАРШРУТ',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold),
+                          style: button,
                         )
                       ], mainAxisAlignment: MainAxisAlignment.center),
                       onPressed: () {
@@ -92,8 +86,7 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
                               'Запланировать',
-                              style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold, color: Colors.grey),
+                              style: smallGrey,
                             )
                           ], mainAxisAlignment: MainAxisAlignment.center),
                           onPressed: () {
@@ -110,8 +103,7 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
                               'В Избранное',
-                              style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold),
+                              style: small,
                             )
                           ], mainAxisAlignment: MainAxisAlignment.center),
                           onPressed: () {
