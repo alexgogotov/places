@@ -12,29 +12,48 @@ class _SightListScreenState extends State<SightListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Container(
-            width: double.infinity,
-            height: 72,
-            margin: EdgeInsets.only(top: 14),
-            child: Text(
-              'Список\nинтересных мест',
-              maxLines: 2,
-              style: largeTitle,
-            ),
+        appBar: MyCustomAppBar(
+          height: 119,
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SightCard(mocks[0]),
+              SightCard(mocks[1]),
+              SightCard(mocks[2])
+            ],
           ),
-          toolbarHeight: 119,
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          elevation: 0,
-          titleSpacing: 16),
-
-      body: SingleChildScrollView(
-        child: Column(children: [
-          SightCard(mocks[0]),
-          SightCard(mocks[1]),
-          SightCard(mocks[2])
-        ],),
-      )
-    );
+        ));
   }
+}
+
+class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final double height;
+
+  const MyCustomAppBar({
+    Key key,
+    @required this.height,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+        title: Container(
+          width: double.infinity,
+          height: 72,
+          margin: EdgeInsets.only(top: 14),
+          child: Text(
+            'Список\nинтересных мест',
+            maxLines: 2,
+            style: largeTitle,
+          ),
+        ),
+        toolbarHeight: height,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        elevation: 0,
+        titleSpacing: 16);
+  }
+
+  @override
+  Size get preferredSize => Size.fromHeight(height);
 }
