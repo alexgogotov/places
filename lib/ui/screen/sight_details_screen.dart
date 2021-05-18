@@ -15,16 +15,22 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
           Column(
             children: [
               Container(
-                width: double.infinity,
-                height: 360,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(
-                        'https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_(cropped).jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
+                  width: double.infinity,
+                  height: 360,
+                  child: Image.network(
+                      'https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_(cropped).jpg',
+                      fit: BoxFit.cover, loadingBuilder: (BuildContext context,
+                          Widget child, ImageChunkEvent loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return Center(
+                      child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded /
+                                loadingProgress.expectedTotalBytes
+                            : null,
+                      ),
+                    );
+                  })),
               Column(
                 children: [
                   Container(
