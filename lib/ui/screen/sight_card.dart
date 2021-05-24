@@ -22,7 +22,11 @@ class SightCard extends StatelessWidget {
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(25.0),
-                        topRight: Radius.circular(25.0))),
+                        topRight: Radius.circular(25.0)),
+                    image: DecorationImage(
+                      image: NetworkImage(sight.url),
+                      fit: BoxFit.cover,
+                    )),
                 child: Stack(
                   children: [
                     Positioned(
