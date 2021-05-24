@@ -138,10 +138,8 @@ class _VisitingScreenState extends State with SingleTickerProviderStateMixin {
             items: [
               BottomNavigationBarItem(icon: Icon(Icons.list), title: Text('')),
               BottomNavigationBarItem(icon: Icon(Icons.map), title: Text('')),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.favorite), title: Text('')),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.settings), title: Text('')),
+              BottomNavigationBarItem(icon: Icon(Icons.favorite), title: Text('')),
+              BottomNavigationBarItem(icon: Icon(Icons.settings), title: Text('')),
             ]));
   }
 }
