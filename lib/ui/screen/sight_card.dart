@@ -24,8 +24,7 @@ class SightCard extends StatelessWidget {
                         topLeft: Radius.circular(25.0),
                         topRight: Radius.circular(25.0)),
                     image: DecorationImage(
-                      image: NetworkImage(
-                          'https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_(cropped).jpg'),
+                      image: NetworkImage(sight.url),
                       fit: BoxFit.cover,
                     )),
                 child: Stack(
