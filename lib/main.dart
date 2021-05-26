@@ -14,7 +14,8 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'App',
       //home: SightListScreen(),
-      home: SightDetailsScreen(),
+      //home: SightDetailsScreen(),
+      home: VisitingScreen(),
     );
   }
 }
