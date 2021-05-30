@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/ui/res/text_styles.dart';
+import 'package:places/ui/res/themes.dart';
 
 class SightDetailsScreen extends StatefulWidget {
   @override
@@ -42,9 +43,9 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                     padding: EdgeInsets.only(left: 16),
                     child: Row(
                       children: [
-                        Text('ресторан', style: smallBold),
+                        Text('ресторан', style: smallBold.copyWith(color: Theme.of(context).colorScheme.unselectedColor)),
                         Padding(padding: EdgeInsets.only(left: 10)),
-                        Text('закрыто до 08:00', style: smallBlueGrey)
+                        Text('закрыто до 08:00', style: small.copyWith(color: Theme.of(context).colorScheme.unselectedColor))
                       ],
                     ),
                   ),
@@ -59,24 +60,24 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                         left: 16, right: 16, top: 20, bottom: 20),
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        color: Colors.green,
+                        color: Theme.of(context).colorScheme.buttonBackgroundColor,
                         shape: BoxShape.rectangle,
                         borderRadius: BorderRadius.all(Radius.circular(10.0))),
                     child: IconButton(
                       icon: Row(children: [
                         Icon(
                           Icons.swap_calls,
-                          color: Colors.white,
                         ),
                         Padding(padding: EdgeInsets.only(left: 10)),
                         Text(
                           'ПОСТРОИТЬ МАРШРУТ',
-                          style: button,
+                          style: button.copyWith(color: Theme.of(context).iconTheme.color),
                         )
                       ], mainAxisAlignment: MainAxisAlignment.center),
                       onPressed: () {
                         print('IconButton BuildRoute is pressed');
                       },
+
                     ),
                   ),
                   Row(
@@ -87,12 +88,12 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                           icon: Row(children: [
                             Icon(
                               Icons.calendar_today,
-                              color: Colors.grey,
+                              color: Theme.of(context).colorScheme.unselectedColor
                             ),
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
                               'Запланировать',
-                              style: smallGrey,
+                              style: small.copyWith(color: Theme.of(context).colorScheme.unselectedColor),
                             )
                           ], mainAxisAlignment: MainAxisAlignment.center),
                           onPressed: () {
@@ -105,11 +106,12 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                           icon: Row(children: [
                             Icon(
                               Icons.favorite,
+                              color: Theme.of(context).colorScheme.selectedColor
                             ),
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
                               'В Избранное',
-                              style: small,
+                              style: small.copyWith(color: Theme.of(context).colorScheme.selectedColor),
                             )
                           ], mainAxisAlignment: MainAxisAlignment.center),
                           onPressed: () {
@@ -130,12 +132,14 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
             width: 32,
             height: 32,
             child: Container(
+              padding: const EdgeInsets.only(left: 3.0),
               decoration: BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.all(Radius.circular(10.0))),
               child: IconButton(
                 icon: Icon(Icons.arrow_back_ios, size: 16),
+                color: Colors.black,
                 onPressed: () {
                   print('IconButton Back is pressed');
                 },

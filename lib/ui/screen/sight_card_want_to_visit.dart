@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/res/text_styles.dart';
+import 'package:places/ui/res/themes.dart';
 
 class SightCardWantToVisit extends StatelessWidget {
   final Sight sight;
@@ -30,7 +31,6 @@ class WidgetUp extends StatelessWidget {
         height: 96,
         margin: EdgeInsets.symmetric(horizontal: 16),
         decoration: BoxDecoration(
-            color: Colors.green,
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(25.0),
@@ -46,7 +46,6 @@ class WidgetUp extends StatelessWidget {
               right: 18,
               child: Icon(
                 Icons.close,
-                color: Colors.white,
               ),
             ),
             Positioned(
@@ -54,7 +53,6 @@ class WidgetUp extends StatelessWidget {
               right: 56,
               child: Icon(
                 Icons.calendar_today_rounded,
-                color: Colors.white,
               ),
             ),
           ],
@@ -73,7 +71,7 @@ class WidgetDown extends StatelessWidget {
         width: double.infinity,
         margin: EdgeInsets.only(left: 16, right: 16, bottom: 16),
         decoration: BoxDecoration(
-            color: const Color(0xfff5f5f5),
+            color: Theme.of(context).colorScheme.cardBackgroundColor,
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(25.0),
@@ -100,7 +98,7 @@ class WidgetDown extends StatelessWidget {
                 margin: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                 child: Text(
                   hours,
-                  style: smallBlueGrey,
+                  style: small.copyWith(color: Theme.of(context).colorScheme.unselectedColor),
                   overflow: TextOverflow.ellipsis,
                 ))
           ],

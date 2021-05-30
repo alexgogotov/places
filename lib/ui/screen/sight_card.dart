@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/res/text_styles.dart';
+import 'package:places/ui/res/themes.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;
@@ -18,7 +19,6 @@ class SightCard extends StatelessWidget {
                 height: 96,
                 margin: EdgeInsets.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
-                    color: Colors.green,
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(25.0),
@@ -45,7 +45,7 @@ class SightCard extends StatelessWidget {
                 height: 92,
                 margin: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                 decoration: BoxDecoration(
-                    color: const Color(0xfff5f5f5),
+                    color: Theme.of(context).colorScheme.cardBackgroundColor,
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(25.0),
@@ -58,13 +58,13 @@ class SightCard extends StatelessWidget {
                         margin: EdgeInsets.only(left: 16, right: 16, bottom: 8),
                         child: Text(
                           sight.name,
-                          style: text,
+                          style: text.copyWith(color: Theme.of(context).colorScheme.titleColor),
                         )),
                     Container(
                         margin: EdgeInsets.only(left: 16, right: 16),
                         child: Text(
                           sight.details,
-                          style: smallBlueGrey,
+                          style: small.copyWith(color: Theme.of(context).colorScheme.unselectedColor),
                           overflow: TextOverflow.ellipsis,
                         ))
                   ],
