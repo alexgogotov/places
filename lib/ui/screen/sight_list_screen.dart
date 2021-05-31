@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:places/ui/screen/sight_card.dart';
 import 'package:places/mocks.dart';
 import 'package:places/ui/res/text_styles.dart';
+import 'package:places/ui/res/themes.dart';
+
 
 class SightListScreen extends StatefulWidget {
   @override
@@ -45,7 +47,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: Text(
             'Список\nинтересных мест',
             maxLines: 2,
-            style: largeTitle,
+            style: largeTitle.copyWith(color: Theme.of(context).colorScheme.titleColor),
           ),
         ),
         toolbarHeight: height,
