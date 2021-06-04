@@ -18,26 +18,33 @@ class SightCard extends StatelessWidget {
                 width: double.infinity,
                 height: 96,
                 margin: EdgeInsets.symmetric(horizontal: 16),
-                decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(25.0),
-                        topRight: Radius.circular(25.0)),
-                    image: DecorationImage(
-                      image: NetworkImage(sight.url),
-                      fit: BoxFit.cover,
-                    )),
                 child: Stack(
                   children: [
+                    Ink(
+                        decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(25.0),
+                                topRight: Radius.circular(25.0)),
+                            image: DecorationImage(
+                              image: NetworkImage(sight.url),
+                              fit: BoxFit.cover,
+                            )),
+                        child: InkWell(
+                            splashColor: Colors.blue,
+                            onTap: () {
+                              print('tap image');
+                            })),
                     Positioned(
-                      top: 19,
-                      right: 18,
-                      child: Container(
-                        width: 20,
-                        height: 18,
-                        color: Colors.red,
-                      ),
-                    ),
+                        top: 6,
+                        right: 6,
+                        child: IconButton(
+                          icon:
+                              ImageIcon(AssetImage("res/icons/menu/heart.png")),
+                          onPressed: () {
+                            print('IconButton heart is pressed');
+                          },
+                        ))
                   ],
                 )),
             Container(
@@ -58,13 +65,17 @@ class SightCard extends StatelessWidget {
                         margin: EdgeInsets.only(left: 16, right: 16, bottom: 8),
                         child: Text(
                           sight.name,
-                          style: text.copyWith(color: Theme.of(context).colorScheme.titleColor),
+                          style: text.copyWith(
+                              color: Theme.of(context).colorScheme.titleColor),
                         )),
                     Container(
                         margin: EdgeInsets.only(left: 16, right: 16),
                         child: Text(
                           sight.details,
-                          style: small.copyWith(color: Theme.of(context).colorScheme.unselectedColor),
+                          style: small.copyWith(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .unselectedColor),
                           overflow: TextOverflow.ellipsis,
                         ))
                   ],

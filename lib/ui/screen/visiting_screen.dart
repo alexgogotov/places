@@ -29,7 +29,8 @@ class _VisitingScreenState extends State with SingleTickerProviderStateMixin {
           title: Center(
               child: Text(
             'Избранное',
-            style: normal.copyWith(color: Theme.of(context).colorScheme.titleColor),
+            style: normal.copyWith(
+                color: Theme.of(context).colorScheme.titleColor),
           )),
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           elevation: 0,
@@ -55,10 +56,18 @@ class _VisitingScreenState extends State with SingleTickerProviderStateMixin {
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(currentIndex: 0, items: [
-          BottomNavigationBarItem(icon: Icon(Icons.list), title: Text('')),
-          BottomNavigationBarItem(icon: Icon(Icons.map), title: Text('')),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), title: Text('')),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), title: Text('')),
+          BottomNavigationBarItem(
+              icon: ImageIcon(AssetImage("res/icons/menu/list.png")),
+              title: Text('')),
+          BottomNavigationBarItem(
+              icon: ImageIcon(AssetImage("res/icons/menu/map.png")),
+              title: Text('')),
+          BottomNavigationBarItem(
+              icon: ImageIcon(AssetImage("res/icons/menu/heart-fill.png")),
+              title: Text('')),
+          BottomNavigationBarItem(
+              icon: ImageIcon(AssetImage("res/icons/menu/settings.png")),
+              title: Text('')),
         ]));
   }
 }
@@ -70,86 +79,67 @@ class MyTabBarController extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      SizedBox(
-        height: 6,
+    return Container(
+      margin: EdgeInsets.only(left: 15, right: 15, top: 6, bottom: 14),
+      height: 40,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.cardBackgroundColor,
+        shape: BoxShape.rectangle,
+        borderRadius: BorderRadius.horizontal(
+            left: Radius.circular(40), right: Radius.circular(40)),
       ),
-      Row(
+      child: Row(
         children: [
-          SizedBox(
-            width: 15,
+          Expanded(
+            child: TextButton(
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        tabController.index == 0
+                            ? Theme.of(context).colorScheme.selectedColor
+                            : Theme.of(context)
+                                .colorScheme
+                                .cardBackgroundColor),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40.0),
+                    ))),
+                child: Text(
+                  'Хочу посетить',
+                  style: TextStyle(
+                      color: tabController.index == 0
+                          ? Theme.of(context).colorScheme.titleAntiColor
+                          : Theme.of(context).colorScheme.unselectedColor),
+                ),
+                onPressed: () {
+                  tabController.animateTo(0);
+                }),
           ),
           Expanded(
-            child: Container(
-              height: 40,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.cardBackgroundColor,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.horizontal(
-                    left: Radius.circular(40), right: Radius.circular(40)),
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 40,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: tabController.index == 0
+            child: TextButton(
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        tabController.index == 1
                             ? Theme.of(context).colorScheme.selectedColor
-                            : Theme.of(context).colorScheme.cardBackgroundColor,
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.horizontal(
-                            left: Radius.circular(40),
-                            right: Radius.circular(40)),
-                      ),
-                      child: Text(
-                        'Хочу посетить',
-                        style: TextStyle(
-                            color: tabController.index == 0
-                                ? Theme.of(context).colorScheme.titleAntiColor
-                                : Theme.of(context)
-                                    .colorScheme
-                                    .unselectedColor),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 40,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: tabController.index == 1
-                            ? Theme.of(context).colorScheme.selectedColor
-                            : Theme.of(context).colorScheme.cardBackgroundColor,
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.horizontal(
-                            left: Radius.circular(40),
-                            right: Radius.circular(40)),
-                      ),
-                      child: Text(
-                        'Посетил',
-                        style: TextStyle(
-                            color: tabController.index == 1
-                                ? Theme.of(context).colorScheme.titleAntiColor
-                                : Theme.of(context)
-                                    .colorScheme
-                                    .unselectedColor),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          SizedBox(
-            width: 15,
-          ),
+                            : Theme.of(context)
+                                .colorScheme
+                                .cardBackgroundColor),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40.0),
+                    ))),
+                child: Text(
+                  'Посетил',
+                  style: TextStyle(
+                      color: tabController.index == 1
+                          ? Theme.of(context).colorScheme.titleAntiColor
+                          : Theme.of(context).colorScheme.unselectedColor),
+                ),
+                onPressed: () {
+                  tabController.animateTo(1);
+                }),
+          )
         ],
       ),
-      SizedBox(
-        height: 14,
-      ),
-    ]);
+    );
   }
 }

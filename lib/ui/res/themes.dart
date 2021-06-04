@@ -1,5 +1,16 @@
 import 'package:flutter/material.dart';
 
+class myAppTheme with ChangeNotifier {
+  myAppTheme({this.isLightTheme});
+
+  bool isLightTheme;
+
+  void changeTheme() {
+    this.isLightTheme = !this.isLightTheme;
+    notifyListeners();
+  }
+}
+
 final lightTheme = ThemeData.light().copyWith(
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
       unselectedItemColor: Colors.grey,

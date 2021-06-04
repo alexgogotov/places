@@ -14,6 +14,7 @@ dependencies:
 
   cupertino_icons: ^0.1.3
   flutter_svg: 0.19.1
+  provider: 5.0.0
 
 dev_dependencies:
   flutter_test:
@@ -23,5 +24,23 @@ flutter:
   uses-material-design: true
 
   assets:
-    - res/
+    - res/icons/menu/heart.png
+    - res/icons/menu/heart-fill.png
+    - res/icons/menu/list.png
+    - res/icons/menu/list-fill.png
+    - res/icons/menu/map.png
+    - res/icons/menu/map-fill.png
+    - res/icons/menu/settings.png
+    - res/icons/menu/settings-fill.png
+    - res/icons/go.png
+    - res/icons/calendar.png
+    - res/icons/close.png
+    - res/icons/share.png
+    - res/icons/catalog/cafe.png
+    - res/icons/catalog/hotel.png
+    - res/icons/catalog/museum.png
+    - res/icons/catalog/park.png
+    - res/icons/catalog/particular-place.png
+    - res/icons/catalog/restourant.png
+    - res/icons/tick-choice.png
 
