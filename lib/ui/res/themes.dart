@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class myAppTheme with ChangeNotifier {
-  myAppTheme({this.isLightTheme});
+class MyAppTheme with ChangeNotifier {
+  MyAppTheme({this.isLightTheme});
 
   bool isLightTheme;
 

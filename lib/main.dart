@@ -11,7 +11,7 @@ void main() {
   //runApp(App());
   runApp(
     ChangeNotifierProvider(
-      create: (_) => myAppTheme(isLightTheme: true),
+      create: (_) => MyAppTheme(isLightTheme: true),
       child: App(),
     ),
   );
@@ -22,14 +22,13 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'App',
-      //theme: darkTheme,
-      theme: Provider.of<myAppTheme>(context).isLightTheme
+      theme: Provider.of<MyAppTheme>(context).isLightTheme
           ? lightTheme
           : darkTheme,
-      home: SightListScreen(),
+      //home: SightListScreen(),
       //home: SightDetailsScreen(),
       //home: VisitingScreen(),
-      //home: FiltersScreen(),
+      home: FiltersScreen(),
       //home: SettingsScreen(),
     );
   }

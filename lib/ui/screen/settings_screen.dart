@@ -30,10 +30,10 @@ class _SettingsScreenState extends State {
             Text('Темная тема', style: normal),
             Expanded(child: SizedBox.shrink()),
             Switch(
-              value: !Provider.of<myAppTheme>(context).isLightTheme,
+              value: !Provider.of<MyAppTheme>(context).isLightTheme,
               onChanged: (value) {
                 setState(() {
-                  Provider.of<myAppTheme>(context, listen: false).changeTheme();
+                  Provider.of<MyAppTheme>(context, listen: false).changeTheme();
                 });
               },
               activeColor: Theme.of(context).colorScheme.buttonBackgroundColor,
