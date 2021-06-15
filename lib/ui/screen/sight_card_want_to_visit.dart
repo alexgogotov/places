@@ -44,16 +44,20 @@ class WidgetUp extends StatelessWidget {
             Positioned(
               top: 19,
               right: 18,
-              child: Icon(
-                Icons.close,
-              ),
+              child: InkWell(
+                  child: Image.asset("res/icons/close.png"),
+                  onTap: () {
+                    print('tap close icon');
+                  }),
             ),
             Positioned(
               top: 19,
               right: 56,
-              child: Icon(
-                Icons.calendar_today_rounded,
-              ),
+              child: InkWell(
+                  child: Image.asset("res/icons/calendar.png"),
+                  onTap: () {
+                    print('tap calendar icon');
+                  }),
             ),
           ],
         ));
@@ -91,7 +95,7 @@ class WidgetDown extends StatelessWidget {
                 margin: EdgeInsets.only(left: 16, right: 16, bottom: 2),
                 child: Text(
                   comment,
-                  style: smallGreen,
+                  style: small.copyWith(color: Colors.green),
                   overflow: TextOverflow.ellipsis,
                 )),
             Container(

@@ -43,9 +43,17 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                     padding: EdgeInsets.only(left: 16),
                     child: Row(
                       children: [
-                        Text('ресторан', style: smallBold.copyWith(color: Theme.of(context).colorScheme.unselectedColor)),
+                        Text('ресторан',
+                            style: smallBold.copyWith(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .unselectedColor)),
                         Padding(padding: EdgeInsets.only(left: 10)),
-                        Text('закрыто до 08:00', style: small.copyWith(color: Theme.of(context).colorScheme.unselectedColor))
+                        Text('закрыто до 08:00',
+                            style: small.copyWith(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .unselectedColor))
                       ],
                     ),
                   ),
@@ -59,41 +67,51 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                     margin: EdgeInsets.only(
                         left: 16, right: 16, top: 20, bottom: 20),
                     width: double.infinity,
-                    decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.buttonBackgroundColor,
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                    child: IconButton(
-                      icon: Row(children: [
-                        Icon(
-                          Icons.swap_calls,
-                        ),
-                        Padding(padding: EdgeInsets.only(left: 10)),
+                    height: 48,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Theme.of(context)
+                                  .colorScheme
+                                  .buttonBackgroundColor),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ))),
+                      child: Row(children: [
+                        Image.asset("res/icons/go.png"),
+                        SizedBox(width: 10),
                         Text(
                           'ПОСТРОИТЬ МАРШРУТ',
-                          style: button.copyWith(color: Theme.of(context).iconTheme.color),
+                          style: button.copyWith(
+                              color: Theme.of(context).iconTheme.color),
                         )
                       ], mainAxisAlignment: MainAxisAlignment.center),
                       onPressed: () {
-                        print('IconButton BuildRoute is pressed');
+                        print('go button is pressed');
                       },
-
                     ),
                   ),
                   Row(
                     children: [
-                      Padding(padding: EdgeInsets.only(left: 16)),
+                      SizedBox(width: 16),
                       Expanded(
                         child: IconButton(
                           icon: Row(children: [
-                            Icon(
-                              Icons.calendar_today,
-                              color: Theme.of(context).colorScheme.unselectedColor
+                              ImageIcon(
+                              AssetImage("res/icons/calendar.png"),
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .unselectedColor,
                             ),
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
                               'Запланировать',
-                              style: small.copyWith(color: Theme.of(context).colorScheme.unselectedColor),
+                              style: small.copyWith(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .unselectedColor),
                             )
                           ], mainAxisAlignment: MainAxisAlignment.center),
                           onPressed: () {
@@ -104,14 +122,19 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                       Expanded(
                         child: IconButton(
                           icon: Row(children: [
-                            Icon(
-                              Icons.favorite,
-                              color: Theme.of(context).colorScheme.selectedColor
+                            ImageIcon(
+                              AssetImage("res/icons/menu/heart.png"),
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .selectedColor,
                             ),
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
                               'В Избранное',
-                              style: small.copyWith(color: Theme.of(context).colorScheme.selectedColor),
+                              style: small.copyWith(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .selectedColor),
                             )
                           ], mainAxisAlignment: MainAxisAlignment.center),
                           onPressed: () {
@@ -119,7 +142,7 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                           },
                         ),
                       ),
-                      Padding(padding: EdgeInsets.only(right: 16)),
+                      SizedBox(width: 16),
                     ],
                   )
                 ],

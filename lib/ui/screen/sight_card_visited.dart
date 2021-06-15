@@ -44,16 +44,20 @@ class WidgetUp extends StatelessWidget {
             Positioned(
               top: 19,
               right: 18,
-              child: Icon(
-                Icons.close,
-              ),
+              child: InkWell(
+                  child: Image.asset("res/icons/close.png"),
+                  onTap: () {
+                    print('tap close icon');
+                  }),
             ),
             Positioned(
               top: 19,
               right: 56,
-              child: Icon(
-                Icons.share,
-              ),
+              child: InkWell(
+                  child: Image.asset("res/icons/share.png"),
+                  onTap: () {
+                    print('tap share icon');
+                  }),
             ),
           ],
         ));
