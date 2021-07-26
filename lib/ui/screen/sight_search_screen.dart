@@ -25,8 +25,8 @@ class _SightSearchScreenState extends State {
   List<String> searchHistory;
   String stringForSearchResult = '';
 
-  _SightSearchScreenState(this.categoriesState, this.distanceTo,
-      this.searchHistory);
+  _SightSearchScreenState(
+      this.categoriesState, this.distanceTo, this.searchHistory);
 
   @override
   void initState() {
@@ -59,16 +59,11 @@ class _SightSearchScreenState extends State {
         automaticallyImplyLeading: false,
         title: Center(
             child: Text(
-              listOfInterestingPlacesText,
-              style:
-              normal.copyWith(color: Theme
-                  .of(context)
-                  .colorScheme
-                  .titleColor),
-            )),
-        backgroundColor: Theme
-            .of(context)
-            .scaffoldBackgroundColor,
+          listOfInterestingPlacesText,
+          style:
+              normal.copyWith(color: Theme.of(context).colorScheme.titleColor),
+        )),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0,
       ),
       body: getBody(),
@@ -109,10 +104,7 @@ class _SightSearchScreenState extends State {
       SizedBox(width: 16),
       Text(youWereLookingForText,
           style: normal12.copyWith(
-              color: Theme
-                  .of(context)
-                  .colorScheme
-                  .unselectedColor))
+              color: Theme.of(context).colorScheme.unselectedColor))
     ]));
 
     for (var sh in searchHistory) {
@@ -121,10 +113,7 @@ class _SightSearchScreenState extends State {
         InkWell(
             child: Text(sh,
                 style: text.copyWith(
-                    color: Theme
-                        .of(context)
-                        .colorScheme
-                        .unselectedColor),
+                    color: Theme.of(context).colorScheme.unselectedColor),
                 textAlign: TextAlign.left),
             onTap: () {
               setState(() {
@@ -140,10 +129,7 @@ class _SightSearchScreenState extends State {
             });
           },
           icon: Icon(Icons.clear,
-              color: Theme
-                  .of(context)
-                  .colorScheme
-                  .unselectedColor),
+              color: Theme.of(context).colorScheme.unselectedColor),
         )
       ]));
     }
@@ -155,10 +141,7 @@ class _SightSearchScreenState extends State {
               child: Text(clearHistoryText,
                   style: text.copyWith(
                       color:
-                      Theme
-                          .of(context)
-                          .colorScheme
-                          .buttonBackgroundColor),
+                          Theme.of(context).colorScheme.buttonBackgroundColor),
                   textAlign: TextAlign.left),
               onTap: () {
                 setState(() {
@@ -176,9 +159,9 @@ class _SightSearchScreenState extends State {
     List<Widget> ch = [];
 
     for (var m in mocks) {
-      if (m.name.toLowerCase().contains(stringForSearchResult.toLowerCase()))
-        if (categoryIsSelected(m.category, categoriesState))
-          ch.add(SightCardSearch(m));
+      if (m.name.toLowerCase().contains(stringForSearchResult
+          .toLowerCase())) if (categoryIsSelected(m.category, categoriesState))
+        ch.add(SightCardSearch(m));
     }
     return Column(children: ch);
   }
@@ -186,17 +169,18 @@ class _SightSearchScreenState extends State {
   bool categoryIsSelected(keysCategories category, Map categoriesState) {
     List selectedCategories = [];
 
-    if (categoriesState[keysCategories
-        .hotel]) selectedCategories.add (keysCategories.hotel);
-    if (categoriesState[keysCategories
-        .restourant]) selectedCategories.add (keysCategories.restourant);
-    if (categoriesState[keysCategories
-        .particularPlace]) selectedCategories.add (keysCategories.particularPlace);
-    if (categoriesState[keysCategories
-        .park]) selectedCategories.add (keysCategories.park);
-    if (categoriesState[keysCategories
-        .museum]) selectedCategories.add (keysCategories.museum);
-    if (categoriesState[keysCategories.cafe]) selectedCategories.add (keysCategories.cafe);
+    if (categoriesState[keysCategories.hotel])
+      selectedCategories.add(keysCategories.hotel);
+    if (categoriesState[keysCategories.restourant])
+      selectedCategories.add(keysCategories.restourant);
+    if (categoriesState[keysCategories.particularPlace])
+      selectedCategories.add(keysCategories.particularPlace);
+    if (categoriesState[keysCategories.park])
+      selectedCategories.add(keysCategories.park);
+    if (categoriesState[keysCategories.museum])
+      selectedCategories.add(keysCategories.museum);
+    if (categoriesState[keysCategories.cafe])
+      selectedCategories.add(keysCategories.cafe);
 
     if (selectedCategories.length == 0) return true;
 
@@ -204,7 +188,6 @@ class _SightSearchScreenState extends State {
 
     return true;
   }
-
 }
 
 class searchRow extends StatelessWidget {
@@ -214,18 +197,15 @@ class searchRow extends StatelessWidget {
 
   //void Function() onPressed;
 
-  searchRow(this.searchTextController, this.searchFocusNode,
-      this.searchHistory);
+  searchRow(
+      this.searchTextController, this.searchFocusNode, this.searchHistory);
 
   @override
   Widget build(BuildContext context) {
     return Container(
         margin: EdgeInsets.only(left: 16, right: 16, bottom: 10),
         decoration: BoxDecoration(
-            color: Theme
-                .of(context)
-                .colorScheme
-                .cardBackgroundColor,
+            color: Theme.of(context).colorScheme.cardBackgroundColor,
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(15.0),
@@ -256,10 +236,7 @@ class searchRow extends StatelessWidget {
                   Navigator.of(context).pop({'searchHistory': searchHistory});
                 },
                 icon: Icon(Icons.cancel,
-                    color: Theme
-                        .of(context)
-                        .colorScheme
-                        .titleColor),
+                    color: Theme.of(context).colorScheme.titleColor),
               ),
             )));
   }

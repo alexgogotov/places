@@ -5,7 +5,6 @@ import 'package:places/ui/res/themes.dart';
 import 'package:places/ui/res/text_content.dart';
 import 'package:places/ui/screen/sight_details_screen.dart';
 
-
 class SightCard extends StatelessWidget {
   final Sight sight;
 
@@ -108,16 +107,18 @@ class SightCardSearch extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                          builder: (context) => SightDetailsScreen(
-                              sight)),
+                          builder: (context) => SightDetailsScreen(sight)),
                     );
                   }))),
-      SizedBox(width:16),
-      Column(crossAxisAlignment: CrossAxisAlignment.start,
-          children: [SizedBox(height:22), Text(sight.name, style: text), SizedBox(height:8), Text(textByKeyCategory(sight.category),
-          style: small.copyWith(
-              color: Theme.of(context).colorScheme.unselectedColor)
-          )])
+      SizedBox(width: 16),
+      Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        SizedBox(height: 22),
+        Text(sight.name, style: text),
+        SizedBox(height: 8),
+        Text(textByKeyCategory(sight.category),
+            style: small.copyWith(
+                color: Theme.of(context).colorScheme.unselectedColor))
+      ])
     ]);
   }
 }
