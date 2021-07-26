@@ -43,4 +43,6 @@ flutter:
     - res/icons/catalog/particular-place.png
     - res/icons/catalog/restourant.png
     - res/icons/tick-choice.png
+    - res/icons/filter.png
+    - res/icons/search.png
 

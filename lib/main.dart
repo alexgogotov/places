@@ -5,6 +5,7 @@ import 'package:places/ui/screen/sight_details_screen.dart';
 import 'package:places/ui/screen/visiting_screen.dart';
 import 'package:places/ui/screen/filters_screen.dart';
 import 'package:places/ui/screen/settings_screen.dart';
+import 'package:places/ui/screen/add_sight_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -25,11 +26,12 @@ class App extends StatelessWidget {
       theme: Provider.of<MyAppTheme>(context).isLightTheme
           ? lightTheme
           : darkTheme,
-      //home: SightListScreen(),
+      home: SightListScreen(),
       //home: SightDetailsScreen(),
       //home: VisitingScreen(),
-      home: FiltersScreen(),
+      //home: FiltersScreen(),
       //home: SettingsScreen(),
+      //home: AddSightScreen(),
     );
   }
 }

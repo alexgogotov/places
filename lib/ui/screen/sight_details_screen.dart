@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:places/ui/res/text_styles.dart';
 import 'package:places/ui/res/themes.dart';
+import 'package:places/domain/sight.dart';
+import 'package:places/ui/res/text_content.dart';
 
 class SightDetailsScreen extends StatefulWidget {
+  final Sight sight;
+
+  SightDetailsScreen(this.sight);
+
   @override
-  _SightDetailsScreenState createState() => _SightDetailsScreenState();
+  _SightDetailsScreenState createState() => _SightDetailsScreenState(sight);
 }
 
 class _SightDetailsScreenState extends State<SightDetailsScreen> {
+  final Sight sight;
+
+  _SightDetailsScreenState(this.sight);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,10 +28,9 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
               Container(
                   width: double.infinity,
                   height: 360,
-                  child: Image.network(
-                      'https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_(cropped).jpg',
-                      fit: BoxFit.cover, loadingBuilder: (BuildContext context,
-                          Widget child, ImageChunkEvent loadingProgress) {
+                  child: Image.network(sight.url, fit: BoxFit.cover,
+                      loadingBuilder: (BuildContext context, Widget child,
+                          ImageChunkEvent loadingProgress) {
                     if (loadingProgress == null) return child;
                     return Center(
                       child: CircularProgressIndicator(
@@ -37,13 +46,13 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                   Container(
                     padding: EdgeInsets.only(left: 16, top: 15),
                     alignment: Alignment.topLeft,
-                    child: Text('Пряности и радости', style: title),
+                    child: Text(sight.name, style: title),
                   ),
                   Container(
                     padding: EdgeInsets.only(left: 16),
                     child: Row(
                       children: [
-                        Text('ресторан',
+                        Text(textByKeyCategory(sight.category),
                             style: smallBold.copyWith(
                                 color: Theme.of(context)
                                     .colorScheme
@@ -58,10 +67,9 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                     ),
                   ),
                   Container(
+                    alignment: Alignment.topLeft,
                     padding: EdgeInsets.only(left: 16, top: 15),
-                    child: Text(
-                        'Пряный вкус радостной жизни вместе с шеф-поваром Изо Дзандзава, благодаря которой у гостей ресторана есть возможность выбирать из двух направлений: европейского и восточного.',
-                        style: small),
+                    child: Text(sight.details, style: small),
                   ),
                   Container(
                     margin: EdgeInsets.only(
@@ -99,11 +107,10 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                       Expanded(
                         child: IconButton(
                           icon: Row(children: [
-                              ImageIcon(
+                            ImageIcon(
                               AssetImage("res/icons/calendar.png"),
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .unselectedColor,
+                              color:
+                                  Theme.of(context).colorScheme.unselectedColor,
                             ),
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
@@ -124,9 +131,8 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                           icon: Row(children: [
                             ImageIcon(
                               AssetImage("res/icons/menu/heart.png"),
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .selectedColor,
+                              color:
+                                  Theme.of(context).colorScheme.selectedColor,
                             ),
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
@@ -164,7 +170,7 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                 icon: Icon(Icons.arrow_back_ios, size: 16),
                 color: Colors.black,
                 onPressed: () {
-                  print('IconButton Back is pressed');
+                  Navigator.of(context).pop();
                 },
               ),
             ),
