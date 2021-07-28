@@ -16,7 +16,6 @@ void main() {
       child: App(),
     ),
   );
-  //test
 }
 
 class App extends StatelessWidget {
