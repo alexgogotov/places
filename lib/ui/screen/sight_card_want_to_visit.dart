@@ -102,7 +102,8 @@ class WidgetDown extends StatelessWidget {
                 margin: EdgeInsets.only(left: 16, right: 16, bottom: 16),
                 child: Text(
                   hours,
-                  style: small.copyWith(color: Theme.of(context).colorScheme.unselectedColor),
+                  style: small.copyWith(
+                      color: Theme.of(context).colorScheme.unselectedColor),
                   overflow: TextOverflow.ellipsis,
                 ))
           ],

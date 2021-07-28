@@ -3,23 +3,23 @@ import 'package:places/ui/res/text_styles.dart';
 import 'package:places/ui/res/themes.dart';
 import 'package:places/ui/res/text_content.dart';
 
-enum keysCategories { hotel, restourant, particularPlace, park, museum, cafe }
-
 class FiltersScreen extends StatefulWidget {
+  Map categoriesState;
+  int distanceTo;
+
+  FiltersScreen(this.categoriesState, this.distanceTo);
+
   @override
-  _FiltersScreenState createState() => _FiltersScreenState();
+  _FiltersScreenState createState() => _FiltersScreenState(categoriesState, distanceTo);
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
-  var categoriesState = {
-    keysCategories.hotel: false,
-    keysCategories.restourant: false,
-    keysCategories.particularPlace: false,
-    keysCategories.park: false,
-    keysCategories.museum: false,
-    keysCategories.cafe: false,
-  };
-  int indexOfSearchOption = 0;
+  Map categoriesState;
+  int distanceTo;
+
+  _FiltersScreenState(this.categoriesState, this.distanceTo);
+
+  int indexOfSearchOption;
   final searchOption = [
     100,
     250,
@@ -45,6 +45,17 @@ class _FiltersScreenState extends State<FiltersScreen> {
     radius9Text
   ];
 
+  @override
+  void initState() {
+    super.initState();
+
+    indexOfSearchOption = 0;
+    for(int dist in searchOption) {
+      if (dist==distanceTo) break;
+      indexOfSearchOption ++;
+    }
+  }
+
   Widget createCategoryButton(keysCategories category) {
     return CategoryButton(category, categoriesState[category], () {
       setState(() {
@@ -64,7 +75,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
               color: Colors.black,
             ),
             onPressed: () {
-              print('IconButton Back is pressed');
+              Navigator.of(context).pop();
             }),
         actions: [
           TextButton(
@@ -89,7 +100,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
           Container(
               margin: EdgeInsets.only(left: 16, top: 24, bottom: 24),
               alignment: Alignment.topLeft,
-              child: Text(categoryText,
+              child: Text(categoriesText,
                   style: normal12.copyWith(
                       color: Theme.of(context).colorScheme.unselectedColor))),
           Row(
@@ -155,7 +166,12 @@ class _FiltersScreenState extends State<FiltersScreen> {
                       showText,
                       style: normal.copyWith(color: Colors.white),
                     ),
-                    onPressed: () {})),
+                    onPressed: () {
+                      Navigator.of(context).pop({
+                        'categoriesState': categoriesState,
+                        'distanceTo': searchOption[indexOfSearchOption]
+                      });
+                    })),
           ))
         ],
       ),
@@ -179,17 +195,6 @@ class CategoryButton extends StatelessWidget {
     if (name == keysCategories.park) return 'res/icons/catalog/park.png';
     if (name == keysCategories.museum) return 'res/icons/catalog/museum.png';
     if (name == keysCategories.cafe) return 'res/icons/catalog/cafe.png';
-  }
-
-  String label() {
-    if (name == keysCategories.hotel) return hotelText;
-    if (name == keysCategories.restourant) return restourantText;
-    if (name == keysCategories.particularPlace) return particularPlaceText;
-    if (name == keysCategories.park) return parkText;
-
-    if (name == keysCategories.museum) return museumText;
-
-    if (name == keysCategories.cafe) return cafeText;
   }
 
   @override
@@ -221,7 +226,7 @@ class CategoryButton extends StatelessWidget {
                     : SizedBox.shrink())
           ])),
       SizedBox(height: 12),
-      Text(label(), style: normal12),
+      Text(textByKeyCategory(name), style: normal12),
     ]);
   }
 }
