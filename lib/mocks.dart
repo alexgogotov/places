@@ -31,5 +31,6 @@ final List<Sight> mocks = [
       'закрыто до 09:00'),
 ];
 
+
 final List<Sight> mocks_want_to_visit = [mocks[0], mocks[2]];
 final List<Sight> mocks_visited = [mocks[1]];
