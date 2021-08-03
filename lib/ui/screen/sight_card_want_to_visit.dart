@@ -5,14 +5,18 @@ import 'package:places/ui/res/themes.dart';
 
 class SightCardWantToVisit extends StatelessWidget {
   final Sight sight;
+  void Function() onDelete;
 
-  SightCardWantToVisit(this.sight);
+  SightCardWantToVisit(this.sight, this.onDelete);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        WidgetUp(sight.url),
+        SizedBox(
+          height: 16,
+        ),
+        WidgetUp(sight.url, onDelete),
         WidgetDown(sight.name, sight.comment, sight.hours),
       ],
     );
@@ -21,8 +25,9 @@ class SightCardWantToVisit extends StatelessWidget {
 
 class WidgetUp extends StatelessWidget {
   final String url;
+  void Function() onDelete;
 
-  WidgetUp(this.url);
+  WidgetUp(this.url, this.onDelete);
 
   @override
   Widget build(BuildContext context) {
@@ -42,14 +47,11 @@ class WidgetUp extends StatelessWidget {
         child: Stack(
           children: [
             Positioned(
-              top: 19,
-              right: 18,
-              child: InkWell(
-                  child: Image.asset("res/icons/close.png"),
-                  onTap: () {
-                    print('tap close icon');
-                  }),
-            ),
+                top: 19,
+                right: 18,
+                child: InkWell(
+                    child: Image.asset("res/icons/close.png"),
+                    onTap: onDelete)),
             Positioned(
               top: 19,
               right: 56,

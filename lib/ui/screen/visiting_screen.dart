@@ -5,6 +5,9 @@ import 'package:places/mocks.dart';
 import 'package:places/ui/res/text_styles.dart';
 import 'package:places/ui/res/themes.dart';
 
+import 'package:places/main.dart';
+import 'package:places/ui/screen/sight_list_screen.dart';
+
 class VisitingScreen extends StatefulWidget {
   @override
   _VisitingScreenState createState() => _VisitingScreenState();
@@ -25,50 +28,65 @@ class _VisitingScreenState extends State with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Center(
-              child: Text(
-            'Избранное',
-            style: normal.copyWith(
-                color: Theme.of(context).colorScheme.titleColor),
-          )),
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          elevation: 0,
-        ),
-        body: Column(
-          children: [
-            MyTabBarController(tabController),
-            Expanded(
-                child: TabBarView(controller: tabController, children: [
-              Column(children: [
-                SizedBox(
-                  height: 16,
-                ),
-                SightCardWantToVisit(mocks[0])
-              ]),
-              Column(children: [
-                SizedBox(
-                  height: 16,
-                ),
-                SightCardVisited(mocks[1])
-              ]),
-            ]))
+      appBar: AppBar(
+        title: Center(
+            child: Text(
+          'Избранное',
+          style:
+              normal.copyWith(color: Theme.of(context).colorScheme.titleColor),
+        )),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        elevation: 0,
+      ),
+      body: Column(
+        children: [
+          MyTabBarController(tabController),
+          Expanded(
+              child: TabBarView(controller: tabController, children: [
+            Column(
+                children: mocks_want_to_visit
+                    .map((t) => SightCardWantToVisit(t, () {
+                          int indexToDelete = 0;
+                          for (var m in mocks_want_to_visit) {
+                            if (m.name == t.name) break;
+                            indexToDelete++;
+                          }
+                          mocks_want_to_visit.removeAt(indexToDelete);
+
+                          setState(() {});
+                        }))
+                    .toList()),
+            Column(
+                children:
+                    mocks_visited.map((t) => SightCardVisited(t)).toList()),
+          ]))
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: indexOfBNB,
+          items: [
+            BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage("res/icons/menu/list.png")),
+                title: Text('')),
+            BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage("res/icons/menu/map.png")),
+                title: Text('')),
+            BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage("res/icons/menu/heart-fill.png")),
+                title: Text('')),
+            BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage("res/icons/menu/settings.png")),
+                title: Text('')),
           ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(currentIndex: 0, items: [
-          BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("res/icons/menu/list.png")),
-              title: Text('')),
-          BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("res/icons/menu/map.png")),
-              title: Text('')),
-          BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("res/icons/menu/heart-fill.png")),
-              title: Text('')),
-          BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("res/icons/menu/settings.png")),
-              title: Text('')),
-        ]));
+          onTap: (int index) {
+            indexOfBNB = index;
+
+            if (indexOfBNB == 0)
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => SightListScreen()),
+              );
+          }),
+    );
   }
 }
 

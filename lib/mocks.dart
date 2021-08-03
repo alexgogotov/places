@@ -27,6 +27,9 @@ final List<Sight> mocks = [
       'https://upload.wikimedia.org/wikipedia/commons/8/85/Tour_Eiffel_Wikimedia_Commons_(cropped).jpg',
       'The most recognizable attraction in Paris',
       keysCategories.particularPlace,
-      '',
-      ''),
+      'Запланировано на 19 сен. 2020',
+      'закрыто до 09:00'),
 ];
+
+final List<Sight> mocks_want_to_visit = [mocks[0], mocks[2]];
+final List<Sight> mocks_visited = [mocks[1]];
