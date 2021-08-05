@@ -8,6 +8,8 @@ import 'package:places/ui/screen/settings_screen.dart';
 import 'package:places/ui/screen/add_sight_screen.dart';
 import 'package:provider/provider.dart';
 
+int indexOfBNB = 0;
+
 void main() {
   //runApp(App());
   runApp(

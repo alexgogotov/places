@@ -12,6 +12,9 @@ class SightCardVisited extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(
+          height: 16,
+        ),
         WidgetUp(sight.url),
         WidgetDown(sight.name, sight.comment, sight.hours),
       ],

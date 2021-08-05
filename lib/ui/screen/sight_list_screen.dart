@@ -8,6 +8,9 @@ import 'package:places/ui/screen/add_sight_screen.dart';
 import 'package:places/ui/screen/sight_search_screen.dart';
 import 'package:places/ui/screen/filters_screen.dart';
 
+import 'package:places/main.dart';
+import 'package:places/ui/screen/visiting_screen.dart';
+
 class SightListScreen extends StatefulWidget {
   @override
   _SightListScreenState createState() => _SightListScreenState();
@@ -75,20 +78,30 @@ class _SightListScreenState extends State<SightListScreen> {
             child: Column(children: listOfMockWidget()),
           ))
         ]),
-        bottomNavigationBar: BottomNavigationBar(currentIndex: 0, items: [
-          BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("res/icons/menu/list.png")),
-              title: Text('')),
-          BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("res/icons/menu/map.png")),
-              title: Text('')),
-          BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("res/icons/menu/heart-fill.png")),
-              title: Text('')),
-          BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("res/icons/menu/settings.png")),
-              title: Text('')),
-        ]),
+        bottomNavigationBar: BottomNavigationBar(
+            currentIndex: indexOfBNB,
+            items: [
+              BottomNavigationBarItem(
+                  icon: ImageIcon(AssetImage("res/icons/menu/list.png")),
+                  title: Text('')),
+              BottomNavigationBarItem(
+                  icon: ImageIcon(AssetImage("res/icons/menu/map.png")),
+                  title: Text('')),
+              BottomNavigationBarItem(
+                  icon: ImageIcon(AssetImage("res/icons/menu/heart-fill.png")),
+                  title: Text('')),
+              BottomNavigationBarItem(
+                  icon: ImageIcon(AssetImage("res/icons/menu/settings.png")),
+                  title: Text('')),
+            ],
+            onTap: (int index) {
+              indexOfBNB = index;
+
+              if (indexOfBNB == 2)
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => VisitingScreen()),
+                );
+            }),
         floatingActionButton: Container(
             width: 177,
             decoration: BoxDecoration(
